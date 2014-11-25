@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MIUI V5中系统级AlertDialog无法显示 | MarkMjw Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIUI V5中系统级AlertDialog无法显示">
+<meta property="og:url" content="http://markmjw.cn/2014/09/17/2014-09-17-the-system-dialog-don-not-show-in-miui/">
+<meta property="og:site_name" content="MarkMjw Blog">
+<meta property="og:description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
+<meta property="og:image" content="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MIUI V5中系统级AlertDialog无法显示">
+<meta name="twitter:description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
+
+  
+    <link rel="alternative" href="/atom.xml" title="MarkMjw Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<div class="profilepic">
+			<img src="http://s.gravatar.com/avatar/556826198e4e0e1e1566f502f5fcc896?s=400">
+		</div>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">MarkMjw</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Love life Love programing.</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/project">项目</a></li>
+				        
+							<li><a href="/about">关于我</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/MarkMjw" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/markmjw" title="weibo">weibo</a>
+					        
+								<a class="linkedin" target="_blank" href="https://www.linkedin.com/profile/view?id=328037702" title="linkedin">linkedin</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+				<section class="switch-part switch-part3">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay"></div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="http://s.gravatar.com/avatar/556826198e4e0e1e1566f502f5fcc896?s=400">
+			</div>
+
+			<hgroup>
+			  <h1 class="header-author"><a href="/">MarkMjw</a></h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Love life Love programing.</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/project">项目</a></li>
+		        
+					<li><a href="/about">关于我</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/MarkMjw" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/markmjw" title="weibo">weibo</a>
+			        
+						<a class="linkedin" target="_blank" href="https://www.linkedin.com/profile/view?id=328037702" title="linkedin">linkedin</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <article id="post-2014-09-17-the-system-dialog-don-not-show-in-miui" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/17/2014-09-17-the-system-dialog-don-not-show-in-miui/" class="article-date">
+  	<time datetime="2014-09-17T06:44:00.000Z" itemprop="datePublished">Sep 17 2014</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+      
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MIUI V5中系统级AlertDialog无法显示
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发过程中相信很多人都有过：在<code>Service</code>或者后台Manager中弹出<code>Dialog</code>而不依赖于某个特定的<code>Activity</code> 这样的需求。通常的做法是将<code>Dialog</code><br>对应的<code>WindowManager.LayoutParams</code>的<code>type</code>设置为<code>TYPE_SYSTEM_ALERT</code>，这样就解决了在<code>Service</code><br>中弹出<code>Dialog</code>的需求。<br><a id="more"></a></p>
+<p>然而，这样做只对原生为经过修改的ROM有效，而对MIUI这种修改过的ROM来说就不兼容了。找了许久才发现罪魁祸首竟然是MIUI默认关闭了每个应用<br>显示系统悬浮窗的功能。如图：</p>
+<p><img src="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png" alt=""></p>
+<h2 id="解决办法">解决办法</h2>
+<h3 id="1-手动打开显示悬浮窗的功能">1.手动打开显示悬浮窗的功能</h3>
+<p>  具体设置路径：</p>
+<pre><code>系统设置-&gt;应用-&gt;对应的APP主页
+</code></pre><p>  不过这似乎对用户而言是解决了问题，但是对于开发者而言如何帮助用户解决呢？<br>  部分产品的解决办法是在APP中增加对MIUI系统用户的引导，让其在使用时手动打开此功能。</p>
+<h3 id="2-程序根据ROM自动判断并兼容">2.程序根据ROM自动判断并兼容</h3>
+<h4 id="分两种情况：">分两种情况：</h4>
+<pre><code>-<span class="ruby"> 只需要在本应用内显示
+</span>-<span class="ruby"> 系统全局显示</span>
+</code></pre><p>   针对第一种情况：我的做法是首先在<code>Application</code>中保存所有启动的<code>Activity</code>的实例，然后在需要显示<code>Dialog</code>的时候进行判断如是MIUI系统则通过<code>Application</code>获取当前<code>Activity</code>的实例来进行显示<code>Dialog</code>。</p>
+<p>判断是否是MIUI系统：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMIUI</span>() {</div><div class="line">    String systemProperty = getSystemProperty(<span class="string">"ro.miui.ui.version.name"</span>);</div><div class="line">    <span class="keyword">return</span> !TextUtils.isEmpty(systemProperty);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getSystemProperty</span>(String propName) {</div><div class="line">    String line;</div><div class="line">    BufferedReader input = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        Process p = Runtime.getRuntime().exec(<span class="string">"getprop "</span> + propName);</div><div class="line">        input = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()), <span class="number">1024</span>);</div><div class="line">        line = input.readLine();</div><div class="line">        input.close();</div><div class="line">    } <span class="keyword">catch</span> (IOException ex) {</div><div class="line">        LogUtil.e(TAG, <span class="string">"Unable to read sysprop "</span> + propName, ex);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    } <span class="keyword">finally</span> {</div><div class="line">        <span class="keyword">if</span> (input != <span class="keyword">null</span>) {</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                input.close();</div><div class="line">            } <span class="keyword">catch</span> (IOException e) {</div><div class="line">                LogUtil.e(TAG, <span class="string">"Exception while closing InputStream"</span>, e);</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> line;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>第二种情况相对复杂一些，我目前也没有找到一种好的解决办法，也许只能提示用户进行手动打开权限了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/09/17/2014-09-17-miui-dont-show-actionmode/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          MIUI无法显示ActionMode
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/04/28/2014-04-28-set-up-a-blog-base-github-by-octopress-in-mac/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在Mac环境下通过Octopress搭建自己的Blog并托管到Github</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2014-09-17-the-system-dialog-don-not-show-in-miui" data-title="MIUI V5中系统级AlertDialog无法显示" data-url="http://markmjw.cn/2014/09/17/2014-09-17-the-system-dialog-don-not-show-in-miui/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2014 MarkMjw
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+  <script src="/js/main.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
