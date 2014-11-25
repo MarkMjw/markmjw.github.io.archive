@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MIUI无法显示ActionMode | MarkMjw Blog</title>
+  <title>MIUI V5中系统级AlertDialog无法显示 | MarkMjw Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近项目中遇到一个特别恶心的事情，在做ListView多选Selection的功能时使用了系统的ActionMode功能，大部分的手机上功能都很正常唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。">
+  <meta name="description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MIUI无法显示ActionMode">
-<meta property="og:url" content="http://markmjw.cn/2014/09/17/2014-09-17-miui-dont-show-actionmode/">
+<meta property="og:title" content="MIUI V5中系统级AlertDialog无法显示">
+<meta property="og:url" content="http://markmjw.cn/2014/09/17/the-system-dialog-don-not-show-in-miui/">
 <meta property="og:site_name" content="MarkMjw Blog">
-<meta property="og:description" content="最近项目中遇到一个特别恶心的事情，在做ListView多选Selection的功能时使用了系统的ActionMode功能，大部分的手机上功能都很正常唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。">
-<meta property="og:image" content="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-01.png">
-<meta property="og:image" content="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-02.png">
+<meta property="og:description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
+<meta property="og:image" content="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MIUI无法显示ActionMode">
-<meta name="twitter:description" content="最近项目中遇到一个特别恶心的事情，在做ListView多选Selection的功能时使用了系统的ActionMode功能，大部分的手机上功能都很正常唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。">
+<meta name="twitter:title" content="MIUI V5中系统级AlertDialog无法显示">
+<meta name="twitter:description" content="在开发过程中相信很多人都有过：在Service或者后台Manager中弹出Dialog而不依赖于某个特定的Activity 这样的需求。通常的做法是将Dialog对应的WindowManager.LayoutParams的type设置为TYPE_SYSTEM_ALERT，这样就解决了在Service中弹出Dialog的需求。">
 
   
     <link rel="alternative" href="/atom.xml" title="MarkMjw Blog" type="application/atom+xml">
@@ -151,18 +150,16 @@
 		</header>				
 	</div>
 </nav>
-      <article id="post-2014-09-17-miui-dont-show-actionmode" class="article article-type-post" itemscope itemprop="blogPost">
+      <article id="post-the-system-dialog-don-not-show-in-miui" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2014/09/17/2014-09-17-miui-dont-show-actionmode/" class="article-date">
-  	<time datetime="2014-09-17T09:03:00.000Z" itemprop="datePublished">Sep 17 2014</time>
+      <a href="/2014/09/17/the-system-dialog-don-not-show-in-miui/" class="article-date">
+  	<time datetime="2014-09-17T06:44:00.000Z" itemprop="datePublished">Sep 17 2014</time>
 </a>
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
     </div>
   
   <div class="article-inner">
@@ -174,7 +171,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MIUI无法显示ActionMode
+      MIUI V5中系统级AlertDialog无法显示
     </h1>
   
 
@@ -182,16 +179,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近项目中遇到一个特别恶心的事情，在做<code>ListView</code>多选<a href="http://developer.android.com/design/patterns/selection.html" target="_blank" rel="external">Selection</a>的功能时使用了系统的<a href="http://developer.android.com/reference/android/view/ActionMode.html" target="_blank" rel="external">ActionMode</a>功能，大部分的手机上功能都很正常<br>唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。</p>
-<p><img src="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-01.png" alt=""></p>
-<a id="more"></a>
+        <p>在开发过程中相信很多人都有过：在<code>Service</code>或者后台Manager中弹出<code>Dialog</code>而不依赖于某个特定的<code>Activity</code> 这样的需求。通常的做法是将<code>Dialog</code><br>对应的<code>WindowManager.LayoutParams</code>的<code>type</code>设置为<code>TYPE_SYSTEM_ALERT</code>，这样就解决了在<code>Service</code><br>中弹出<code>Dialog</code>的需求。<br><a id="more"></a></p>
+<p>然而，这样做只对原生为经过修改的ROM有效，而对MIUI这种修改过的ROM来说就不兼容了。找了许久才发现罪魁祸首竟然是MIUI默认关闭了每个应用<br>显示系统悬浮窗的功能。如图：</p>
+<p><img src="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png" alt=""></p>
+<h2 id="解决办法">解决办法</h2>
+<h3 id="1-手动打开显示悬浮窗的功能">1.手动打开显示悬浮窗的功能</h3>
+<p>  具体设置路径：</p>
+<pre><code>系统设置-&gt;应用-&gt;对应的APP主页
+</code></pre><p>  不过这似乎对用户而言是解决了问题，但是对于开发者而言如何帮助用户解决呢？<br>  部分产品的解决办法是在APP中增加对MIUI系统用户的引导，让其在使用时手动打开此功能。</p>
+<h3 id="2-程序根据ROM自动判断并兼容">2.程序根据ROM自动判断并兼容</h3>
+<h4 id="分两种情况：">分两种情况：</h4>
+<pre><code>-<span class="ruby"> 只需要在本应用内显示
+</span>-<span class="ruby"> 系统全局显示</span>
+</code></pre><p>   针对第一种情况：我的做法是首先在<code>Application</code>中保存所有启动的<code>Activity</code>的实例，然后在需要显示<code>Dialog</code>的时候进行判断如是MIUI系统则通过<code>Application</code>获取当前<code>Activity</code>的实例来进行显示<code>Dialog</code>。</p>
+<p>判断是否是MIUI系统：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isMIUI</span>() {</div><div class="line">    String systemProperty = getSystemProperty(<span class="string">"ro.miui.ui.version.name"</span>);</div><div class="line">    <span class="keyword">return</span> !TextUtils.isEmpty(systemProperty);</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getSystemProperty</span>(String propName) {</div><div class="line">    String line;</div><div class="line">    BufferedReader input = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> {</div><div class="line">        Process p = Runtime.getRuntime().exec(<span class="string">"getprop "</span> + propName);</div><div class="line">        input = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(p.getInputStream()), <span class="number">1024</span>);</div><div class="line">        line = input.readLine();</div><div class="line">        input.close();</div><div class="line">    } <span class="keyword">catch</span> (IOException ex) {</div><div class="line">        LogUtil.e(TAG, <span class="string">"Unable to read sysprop "</span> + propName, ex);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    } <span class="keyword">finally</span> {</div><div class="line">        <span class="keyword">if</span> (input != <span class="keyword">null</span>) {</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                input.close();</div><div class="line">            } <span class="keyword">catch</span> (IOException e) {</div><div class="line">                LogUtil.e(TAG, <span class="string">"Exception while closing InputStream"</span>, e);</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="keyword">return</span> line;</div><div class="line">}</div></pre></td></tr></table></figure>
 
-<h3 id="原因">原因</h3>
-<p>在<code>menu</code>的布局文件中将<code>item</code>设置如下：<br>        android:showAsAction=”always”<br>此时在MIUI中，长按<code>ListView</code>虽然会进入多选的状态但<code>ActionMode</code>无法显示。但如将<code>item</code>的设置为：<br>        android:showAsAction=”never”<br>则可以显示，但由于产品的要求该<code>item</code>需要始终显示，该怎么办呢？冥思许久，既然不能直接搞定，那么我就采取曲线救国的方式，解决办法如下。</p>
-<h3 id="解决办法">解决办法</h3>
-<p>非常幸运Google为我们提供了非常强大的<code>ActionBar</code>，可以通过方法设置自定义View:<br>        mActionBar.setCustomView(R.layout.vw_action_layout);<br>这样我们只需在<code>vw_action_layout</code>中按照各自的需求进行布局即可，然后按照一般的额View设置各自的监听事件即可。</p>
-<h3 id="最终效果">最终效果</h3>
-<p><img src="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-02.png" alt=""></p>
+<p>第二种情况相对复杂一些，我目前也没有找到一种好的解决办法，也许只能提示用户进行手动打开权限了。</p>
 
       
     </div>
@@ -204,18 +208,18 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/09/17/2014-09-17-markdown-example/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/09/17/miui-dont-show-actionmode/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">&lt;</strong>
       <div class="article-nav-title">
         
-          Markdown语法示例
+          MIUI无法显示ActionMode
         
       </div>
     </a>
   
   
-    <a href="/2014/09/17/2014-09-17-the-system-dialog-don-not-show-in-miui/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MIUI V5中系统级AlertDialog无法显示</div>
+    <a href="/2014/04/28/set-up-a-blog-base-github-by-octopress-in-mac/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">在Mac环境下通过Octopress搭建自己的Blog并托管到Github</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   

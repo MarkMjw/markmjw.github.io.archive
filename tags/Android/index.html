@@ -181,11 +181,224 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>几天前，Google终于发布了Android Studio 1.0RC 。从Google IO 2013发布至今历时一年半的时间，大大小小几十个版本的迭代总算熬出头了。从0.1.0的Preview到0.8.0的Beta再到1.0的Release Candidate，我几乎每一个版本都使用过，其中的辛酸相信用过的人都知道。前期的Android Studio不稳定，Bug很多，想要长期作为生产工具需要一定耐心，不过现在好了基本上趋于稳定了，当然问题依旧不少，出了问题网上也能搜到解决办法了。</p>
-<p>Android 5.0正式版也于近期进行了推送，相信不少的 Nexus 死忠们已经升级了，我也不例外。不知道具体什么原因，所以友盟提供的打包工具打出来的包无法在Android 5.0上安装。所以无奈之下只好自己来写打包脚本了，虽然以前也写过Gradle的打包但是由于Google改动了不少东西导致不能使用了。接下来我会简单地记录一些关键点并加以说明。</p>
+<p>Android 5.0正式版也于近期进行了推送，相信不少的 Nexus 死忠们已经升级了，我也不例外。不知道具体什么原因导致友盟提供的打包工具打出来的包无法在Android 5.0上安装。所以无奈之下只好自己来写打包脚本了，虽然以前也写过Gradle的打包但是由于Google改动了不少东西导致不能使用了。接下来我会简单地记录一些关键点并加以说明。</p>
 
         
           <p class="article-more-link">
             <a href="/2014/11/25/android-studio-gradle-package-for-umeng/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-miui-dont-show-actionmode" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/17/miui-dont-show-actionmode/" class="article-date">
+  	<time datetime="2014-09-17T09:03:00.000Z" itemprop="datePublished">Sep 17 2014</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/miui-dont-show-actionmode/">MIUI无法显示ActionMode</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近项目中遇到一个特别恶心的事情，在做<code>ListView</code>多选<a href="http://developer.android.com/design/patterns/selection.html" target="_blank" rel="external">Selection</a>的功能时使用了系统的<a href="http://developer.android.com/reference/android/view/ActionMode.html" target="_blank" rel="external">ActionMode</a>功能，大部分的手机上功能都很正常<br>唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。</p>
+<p><img src="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-01.png" alt=""></p>
+
+        
+          <p class="article-more-link">
+            <a href="/2014/09/17/miui-dont-show-actionmode/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-the-system-dialog-don-not-show-in-miui" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/09/17/the-system-dialog-don-not-show-in-miui/" class="article-date">
+  	<time datetime="2014-09-17T06:44:00.000Z" itemprop="datePublished">Sep 17 2014</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/17/the-system-dialog-don-not-show-in-miui/">MIUI V5中系统级AlertDialog无法显示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发过程中相信很多人都有过：在<code>Service</code>或者后台Manager中弹出<code>Dialog</code>而不依赖于某个特定的<code>Activity</code> 这样的需求。通常的做法是将<code>Dialog</code><br>对应的<code>WindowManager.LayoutParams</code>的<code>type</code>设置为<code>TYPE_SYSTEM_ALERT</code>，这样就解决了在<code>Service</code><br>中弹出<code>Dialog</code>的需求。<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/09/17/the-system-dialog-don-not-show-in-miui/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-building-android-rest-client-applications-efficiently-number-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/27/building-android-rest-client-applications-efficiently-number-2/" class="article-date">
+  	<time datetime="2014-04-27T12:30:00.000Z" itemprop="datePublished">Apr 27 2014</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/27/building-android-rest-client-applications-efficiently-number-2/">快速构建Android REST客户端 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据解析和存储">数据解析和存储</h1>
+<h3 id="JsonPaser">JsonPaser</h3>
+<p>如果你还在使用<code>Android</code>提供的<code>JsonObject</code>来解析JSON数据，是时候鸟枪换炮了！<br>Android开发中常用的JsonPaser有这么几个：</p>
+<ul>
+<li><a href="https://www.google.com.hk/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;ved=0CCsQFjAA&amp;url=http%3a%2f%2fcode%2egoogle%2ecom%2fp%2fgoogle-gson%2f&amp;ei=Vv3sUengEoPJkwXcvYDIDg&amp;usg=AFQjCNGGFFMez8-PfFoEQP93a7eHFY8ssA" target="_blank" rel="external">Gson</a> 由Google开发的Json Parser 使用简单，只需要引入一个jar包，相对于<code>Android</code>系统提供的parser，效率有明显的优势</li>
+<li><a href="http://jackson.codehaus.org/" target="_blank" rel="external">Jackson</a> 另一个颇有名气的项目，需要引入很多包相对比较复杂</li>
+<li><a href="http://code.alibabatech.com/wiki/display/FastJSON/Home-zh" target="_blank" rel="external">FastJson</a> 阿里主导的开源项目，要求类的每一个属性都具备getter/setter这一点我不能忍
+        
+          <p class="article-more-link">
+            <a href="/2014/04/27/building-android-rest-client-applications-efficiently-number-2/#more">more >></a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-building-android-rest-client-applications-efficiently-number-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/04/27/building-android-rest-client-applications-efficiently-number-1/" class="article-date">
+  	<time datetime="2014-04-27T12:21:00.000Z" itemprop="datePublished">Apr 27 2014</time>
+</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/27/building-android-rest-client-applications-efficiently-number-1/">快速构建Android REST客户端 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/media/2014-04-27-building-android-rest-client-applications-efficiently/Driibo_on_MX2.jpg" alt=""></p>
+<p>日常使用的各种客户端：新浪微博客户端、Google+、Path、人人等，都属于REST App，如何快速的构建<code>REST</code>客户端也成为了近年来<code>Google IO</code>大会上的热门课题，而我在这方面也投入了近一年的经历（从<a href="/project">项目经历</a>来看，简直就是客户端专业户了，泪···）。下面我将以最近开发的<a href="https://github.com/Issacw0ng/Dribbo" target="_blank" rel="external">Driibo(on github)</a>为例，手把手带大家开发<code>REST</code>客户端。<br>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/27/building-android-rest-client-applications-efficiently-number-1/#more">more >></a>
           </p>
         
       
