@@ -181,7 +181,7 @@
       
         <p>在开发过程中相信很多人都有过：在<code>Service</code>或者后台Manager中弹出<code>Dialog</code>而不依赖于某个特定的<code>Activity</code> 这样的需求。通常的做法是将<code>Dialog</code><br>对应的<code>WindowManager.LayoutParams</code>的<code>type</code>设置为<code>TYPE_SYSTEM_ALERT</code>，这样就解决了在<code>Service</code><br>中弹出<code>Dialog</code>的需求。<br><a id="more"></a></p>
 <p>然而，这样做只对原生为经过修改的ROM有效，而对MIUI这种修改过的ROM来说就不兼容了。找了许久才发现罪魁祸首竟然是MIUI默认关闭了每个应用<br>显示系统悬浮窗的功能。如图：</p>
-<p><img src="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png" alt=""></p>
+<p><img src="/media/2014-09-17-the-system-dialog-don-not-show-in-miui/MI3-screen-shot.png" alt="小米3截屏"></p>
 <h2 id="解决办法">解决办法</h2>
 <h3 id="1-手动打开显示悬浮窗的功能">1.手动打开显示悬浮窗的功能</h3>
 <p>  具体设置路径：</p>
