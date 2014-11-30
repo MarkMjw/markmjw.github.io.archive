@@ -180,14 +180,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近项目中遇到一个特别恶心的事情，在做<code>ListView</code>多选<a href="http://developer.android.com/design/patterns/selection.html" target="_blank" rel="external">Selection</a>的功能时使用了系统的<a href="http://developer.android.com/reference/android/view/ActionMode.html" target="_blank" rel="external">ActionMode</a>功能，大部分的手机上功能都很正常<br>唯独在MIUI上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。</p>
+        <p>最近项目中遇到一个特别恶心的事情，在做<code>ListView</code>多选<a href="http://developer.android.com/design/patterns/selection.html" target="_blank" rel="external">Selection</a>的功能时使用了系统的<a href="http://developer.android.com/reference/android/view/ActionMode.html" target="_blank" rel="external">ActionMode</a>功能，大部分的手机上功能都很正常<br>唯独在<code>MIUI</code>上始终无法显示且没有任何错误提示。各种Google之后仍然找不到原因，无奈之下只好自己挨个测试，花了近乎一天的时间总算找到点眉目。</p>
 <p><img src="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-01.png" alt="小米2截屏"></p>
 <a id="more"></a>
 
 <h3 id="原因">原因</h3>
-<p>在<code>menu</code>的布局文件中将<code>item</code>设置如下：<br>        android:showAsAction=”always”<br>此时在MIUI中，长按<code>ListView</code>虽然会进入多选的状态但<code>ActionMode</code>无法显示。但如将<code>item</code>的设置为：<br>        android:showAsAction=”never”<br>则可以显示，但由于产品的要求该<code>item</code>需要始终显示，该怎么办呢？冥思许久，既然不能直接搞定，那么我就采取曲线救国的方式，解决办法如下。</p>
+<p>在<code>menu</code>的布局文件中将<code>item</code>设置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:showAsAction="always"</div></pre></td></tr></table></figure>
+
+<p>此时在<code>MIUI</code>中，长按<code>ListView</code>虽然会进入多选的状态但<code>ActionMode</code>无法显示。但如将<code>item</code>的设置为：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:showAsAction="never"</div></pre></td></tr></table></figure>
+
+<p>则可以显示，但由于产品的要求该<code>item</code>需要始终显示，该怎么办呢？冥思许久，既然不能直接搞定，那么我就采取曲线救国的方式，解决办法如下。</p>
 <h3 id="解决办法">解决办法</h3>
-<p>非常幸运Google为我们提供了非常强大的<code>ActionBar</code>，可以通过方法设置自定义View:<br>        mActionBar.setCustomView(R.layout.vw_action_layout);<br>这样我们只需在<code>vw_action_layout</code>中按照各自的需求进行布局即可，然后按照一般的额View设置各自的监听事件即可。</p>
+<p>非常幸运Google为我们提供了非常强大的<code>ActionBar</code>，可以通过方法设置自定义View:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mActionBar.setCustomView(R.layout.vw_action_layout);</div></pre></td></tr></table></figure>
+
+<p>这样我们只需在<code>vw_action_layout</code>中按照各自的需求进行布局即可，然后按照一般的额View设置各自的监听事件即可。</p>
 <h3 id="最终效果">最终效果</h3>
 <p><img src="/media/2014-09-17-miui-dont-show-actionmode/mi2-screen-shot-02.png" alt="小米2截屏"></p>
 
