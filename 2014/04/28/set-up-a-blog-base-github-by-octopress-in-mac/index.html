@@ -236,7 +236,7 @@
 <p>弹出<code>Enter passphrase (empty for no passphrase):</code>输入你Github账号的密码。<code>Enter same passphrase again:</code>再次输入你的密码。</p>
 <p>打开<code>~/.ssh</code>下的<code>id_rsa.pub</code>文件复制里面的全部内容。<br>登陆<code>Github</code>，选择 <strong>Account Settings—&gt;SSH Public Keys</strong>  添加<code>ssh</code>，把剪切板的内容复制到<code>key</code>输入框内直接保存。</p>
 <p>测试shh:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh git@github.com</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh git@github.com</div></pre></td></tr></table></figure>
 
 <p>输出</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PTY allocation request failed <span class="function_start"><span class="keyword">on</span></span> channel <span class="number">0</span></div><div class="line">Hi username! You've successfully authenticated, <span class="keyword">but</span> GitHub <span class="keyword">does</span> <span class="keyword">not</span> provide shell access.</div><div class="line">Connection <span class="keyword">to</span> github.com closed.</div></pre></td></tr></table></figure>
